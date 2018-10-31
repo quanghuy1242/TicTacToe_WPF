@@ -1,0 +1,122 @@
+﻿<Window x:Class="Caro3x3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Caro3x3"
+        mc:Ignorable="d"
+        Title="Tic Tac Toe" Height="480" Width="450"
+        Background="WhiteSmoke"
+        FontFamily="Roboto"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#14bdac"/>
+            <Setter Property="FontSize" Value="70"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="2 2 2 2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#14bdac"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="gridMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="5"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="170"/>
+                    <Setter Property="Margin" Value="20"/>
+                    <Setter Property="Height" Value="35"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="0 0 0 3" BorderBrush="#14bdac">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="White"></Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 0 20 0">Bạn:</TextBlock>
+                    <TextBlock x:Name="txtBan">0</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 0 20 0">Máy:</TextBlock>
+                    <TextBlock x:Name="txtMay">0</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="1" Tag="1" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="1" Grid.Row="2" Tag="4" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="1" Grid.Row="3" Tag="7" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="2" Grid.Row="1" Tag="2" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="2" Grid.Row="2" Tag="5" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="2" Grid.Row="3" Tag="8" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="3" Grid.Row="1" Tag="3" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="3" Grid.Row="2" Tag="6" FontFamily="Berlin Sans FB"></Button>
+        <Button Grid.Column="3" Grid.Row="3" Tag="9" FontFamily="Berlin Sans FB"></Button>
+        <StackPanel Grid.ColumnSpan="5" Grid.Row="4">
+            <Button Background="WhiteSmoke" Height="30">
+                <TextBlock FontSize="15" FontWeight="Bold" Foreground="Red" x:Name="txtStatus"></TextBlock>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.ColumnSpan="5" Grid.Row="5">
+            <Button Background="White" Height="50" Click="Button_Click_1">
+                <TextBlock FontSize="20" FontWeight="Bold" Foreground="#14bdac">KHỞI ĐỘNG LẠI TRÒ CHƠI</TextBlock>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.ColumnSpan="5" Grid.Row="6">
+            <Button Background="White" Height="30" MouseDoubleClick="Button_MouseDoubleClick">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="15" FontWeight="Bold" Foreground="#14bdac" Margin="0 0 10 0">CHẾ ĐỘ CHƠI:</TextBlock>
+                    <TextBlock FontSize="15" FontWeight="Bold" Foreground="Orange" Width="30" HorizontalAlignment="Center" x:Name="txtChedo">KHÓ</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
